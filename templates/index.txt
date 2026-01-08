@@ -134,7 +134,7 @@
 <body>
 
     <div class="header">
-        <h1>KALYAN JEWELLERS(BANKA) GOLD RATE(TODAY) </h1>
+        <h1>JEWELLERY RATES</h1>
     </div>
 
     <div class="breadcrumb">
@@ -161,7 +161,6 @@
                 <option>Delhi</option>
                 <option>Mumbai</option>
                 <option>Kerala</option>
-                <option>Bihar</option>
             </select>
             <button style="background-color: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer;">SUBMIT</button>
         </div>
