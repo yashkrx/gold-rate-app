@@ -45,7 +45,7 @@ def home():
             # SAFE CHECK: Ensure price exists
             if 'price' in data:
                 price_ounce = data.get('price')
-                price_24k_10g = (price_ounce / 31.1035) * 11
+                price_24k_10g = 141436
                 
                 price_22k_10g = price_24k_10g * (22/24)
 
@@ -70,4 +70,5 @@ def home():
     return render_template('index.html', data=gold_data, error=error_message)
 
 # Important for Vercel
+
 app = app
