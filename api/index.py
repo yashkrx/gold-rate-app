@@ -1,21 +1,22 @@
 from flask import Flask, render_template
-import requests
 import os
+import requests
+from datetime import datetime
 
-# Point to the 'templates' folder in the parent directory
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__)
 
-# Get API Key from Environment Variable (Secure way)
-API_KEY = os.environ.get('goldapi-424wtsmk4gjonm-io')
-BASE_URL = 'https://www.goldapi.io/api/XAU/USD'
+# CONFIGURATION
+API_KEY = os.environ.get('GOLD_API_KEY')
+BASE_URL = 'https://www.goldapi.io/api/XAU/INR'
 
 @app.route('/')
 def home():
     gold_data = {}
     error_message = None
+    today_date = datetime.now().strftime("%d-%b-%Y") # e.g., 08-Jan-2026
 
     if not API_KEY:
-        return render_template('index.html', error="API Key missing in configuration.")
+        return render_template('index.html', error="API Key missing.")
 
     try:
         headers = {
@@ -27,12 +28,23 @@ def home():
         
         if response.status_code == 200:
             data = response.json()
+            
+            # Base calculation: Price per 10 grams 24K
+            price_ounce = data.get('price')
+            price_24k_10g = (price_ounce / 31.1035) * 10
+            
+            # Calculate other purities commonly shown on jewelry sites
+            price_22k_10g = price_24k_10g * (22/24)
+            price_18k_10g = price_24k_10g * (18/24)
+            
             gold_data = {
-                'price': round(data.get('price'), 2),
-                'currency': 'USD',
-                'symbol': 'XAU',
-                'low_price': round(data.get('low_price'), 2),
-                'high_price': round(data.get('high_price'), 2)
+                'date': today_date,
+                'price_24k': "{:,.0f}".format(price_24k_10g),
+                'price_22k': "{:,.0f}".format(price_22k_10g),
+                'price_18k': "{:,.0f}".format(price_18k_10g),
+                'currency': '₹',
+                # Mock trend for design purposes (up/down arrow)
+                'trend': 'up' if data.get('price_change_24h', 0) > 0 else 'down'
             }
         else:
             error_message = f"Error fetching data: {response.status_code}"
@@ -42,5 +54,5 @@ def home():
 
     return render_template('index.html', data=gold_data, error=error_message)
 
-# Vercel requires this for the serverless function to work
-app = app
+if __name__ == '__main__':
+    app.run(debug=True)
