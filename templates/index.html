@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Gold Rate</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify_content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 300px;
+            border: 1px solid #333;
+        }
+        h1 {
+            font-size: 1.5rem;
+            color: #ffd700; /* Gold color */
+            margin-bottom: 0.5rem;
+        }
+        .price-box {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #fff;
+        }
+        .currency {
+            font-size: 1rem;
+            color: #888;
+            vertical-align: super;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        .refresh-btn {
+            background-color: #ffd700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .refresh-btn:hover {
+            background-color: #e6c200;
+        }
+        .error {
+            color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <h1>Gold (XAU)</h1>
+        <p style="color: #888; margin: 0;">Live Spot Price</p>
+
+        {% if data %}
+            <div class="price-box">
+                <span class="currency">$</span>{{ data.price }}
+            </div>
+
+            <div class="stats">
+                <div>
+                    <span>Low</span><br>
+                    <span style="color: #ff4d4d;">${{ data.low_price }}</span>
+                </div>
+                <div>
+                    <span>High</span><br>
+                    <span style="color: #00cc66;">${{ data.high_price }}</span>
+                </div>
+            </div>
+        {% else %}
+            <p>Loading...</p>
+        {% endif %}
+
+        <button class="refresh-btn" onclick="window.location.reload();">Refresh Rate</button>
+    </div>
+
+</body>
+</html>
