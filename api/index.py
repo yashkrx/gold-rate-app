@@ -39,13 +39,15 @@ def home():
         
         response = requests.get(BASE_URL, headers=headers)
         
+        if response.status_code == 200:
+            data = response.json()
             
             # SAFE CHECK: Ensure price exists
-    
-                price_24k_10g = 141436
+            if 'price' in data:
+                price_ounce = data.get('price')
+                price_24k_10g = (price_ounce / 31.1035) * 10
                 
                 price_22k_10g = price_24k_10g * (22/24)
-
                 price_18k_10g = price_24k_10g * (18/24)
                 
                 gold_data = {
@@ -56,6 +58,10 @@ def home():
                     'currency': '₹',
                     'trend': 'up' 
                 }
+            else:
+                error_message = "API returned data but price is missing."
+        else:
+            error_message = f"Error fetching data: {response.status_code}"
 
     except Exception as e:
         error_message = f"Internal Error: {str(e)}"
@@ -63,6 +69,4 @@ def home():
     return render_template('index.html', data=gold_data, error=error_message)
 
 # Important for Vercel
-
 app = app
-
