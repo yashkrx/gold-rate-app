@@ -45,10 +45,11 @@ def home():
             # SAFE CHECK: Ensure price exists
             if 'price' in data:
                 price_ounce = data.get('price')
-                price_24k_10g = (price_ounce / 31.1035) * 10
+                price_24k_10g = (price_ounce / 31.1035) * 11
                 
-                price_22k_10g = price_24k_10g * (22/24)
-                price_18k_10g = price_24k_10g * (18/24)
+                price_22k_10g = (price_24k_10g * (22/24))*1.10
+
+                price_18k_10g = (price_24k_10g * (18/24))*1.10
                 
                 gold_data = {
                     'date': today_date,
