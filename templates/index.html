@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             color: #333;
+            border-radius: 10px;
         }
         
         /* HEADER STYLE (Black & Gold) */
@@ -20,7 +21,7 @@
             padding: 15px 0;
             text-align: center;
             border-bottom: 3px solid #d4af37;
-            border-radius: 3;
+            border-radius: 10px;
         }
         .header h1 {
             color: #d4af37; /* Kalyan Gold Color */
@@ -29,7 +30,7 @@
             letter-spacing: 2px;
             font-size: 24px;
             text-transform: uppercase;
-            border-radius: 3;
+            border-radius: 10px;
         }
 
         /* BREADCRUMB */
@@ -39,6 +40,7 @@
             font-size: 12px;
             color: #666;
             border-bottom: 1px solid #eee;
+            border-radius: 10px;
         }
 
         /* MAIN CONTAINER */
@@ -48,7 +50,7 @@
             padding: 20px;
             background: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-radius: 3;
+            border-radius: 10px;
         }
 
         /* TITLE SECTION */
@@ -78,7 +80,7 @@
             gap: 15px;
             margin-bottom: 40px;
             flex-wrap: wrap;
-            border-radius: 3;
+            border-radius: 10px;
         }
         .select-box {
             padding: 10px 15px;
@@ -87,7 +89,7 @@
             background-color: #fff;
             color: #555;
             font-size: 14px;
-            border-radius: 3; /* Square edges like the original site */
+            border-radius: 10px; /* Square edges like the original site */
         }
 
         /* RATES TABLE */
@@ -95,7 +97,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            border-radius: 3;
+            border-radius: 10px;
         }
         .rates-table th {
             background-color: #f4f4f4;
@@ -106,14 +108,14 @@
             border-bottom: 2px solid #d4af37;
             text-transform: uppercase;
             font-size: 14px;
-            border-radius: 3;
+            border-radius: 10px;
         }
         .rates-table td {
             padding: 15px;
             border-bottom: 1px solid #eee;
             color: #333;
             font-size: 16px;
-            border-radius: 3;
+            border-radius: 10px;
         }
         .price-up { color: green; }
         .price-down { color: red; }
@@ -124,7 +126,7 @@
             font-size: 11px;
             color: #999;
             text-align: center;
-            border-radius: 3;
+            border-radius: 10px;
         }
 
         /* ERROR MESSAGE */
@@ -142,7 +144,7 @@
 <body>
 
     <div class="header">
-        <h1>KALYAN JEWELLERS         GOLD RATE(TODAY) </h1>
+        <h1>KALYAN JEWELLERS GOLD RATE(TODAY) </h1>
     </div>
 
     <div class="breadcrumb">
@@ -175,7 +177,7 @@
         </div>
 
         <h3 style="text-align: center; font-size: 16px; margin-top: 30px; color: #d4af37;">
-            TODAY'S GOLD RATE IN INDIA <span style="color: #999; font-weight: normal;">({{ data.date }})</span>
+            TODAY'S GOLD RATE AT KALYAN JEWELLERS <span style="color: #999; font-weight: normal;">({{ data.date }})</span>
         </h3>
 
         {% if data %}
@@ -217,4 +219,5 @@
 </body>
 
 </html>
+
 
