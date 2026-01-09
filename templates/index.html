@@ -96,9 +96,23 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            border: 3px solid gold;
-            border-radius: 10px;
+            border: 4px solid transparent;
+  
+  /* 2. Set the curve */
+  border-radius: 15px;
+
+  /* 3. The Magic: Two backgrounds. 
+     - The first is the color of the INSIDE of your box (e.g., white or black).
+     - The second is the Gold Gradient. */
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(to bottom right, #b88746, #fdf5a6, #b88746);
+  
+  /* 4. Tell the browser to paint the first layer inside the padding, 
+     and the second layer across the whole border area */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
         }
+        
         .rates-table th {
             background-color: #f4f4f4;
             color: #333;
@@ -125,6 +139,13 @@
             margin-top: 30px;
             font-size: 11px;
             color: #999;
+            text-align: center;
+            border-radius: 10px;
+        }
+        . copyright {
+            margin-top: 30px;
+            font-size: 25px;
+            color: #d4af37;
             text-align: center;
             border-radius: 10px;
         }
@@ -221,11 +242,14 @@
         <div class="disclaimer">
             *Gold rate updated daily. Prices may vary by city and store. Local taxes not included.
         </div>
+        <div class="copyright">
+            Copyright © 2026 Kalyan Jewellers. All rights reserved.daily.  </div>
     </div>
 
 </body>
 
 </html>
+
 
 
 
