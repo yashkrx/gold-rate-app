@@ -36,7 +36,7 @@ def home():
             # 2. Convert USD/Ounce to INR/10g
             # 1 Troy Ounce = 31.1035 grams
             price_ounce_inr = price_ounce_usd * usd_to_inr
-            base_price_24k = (price_ounce_inr / 31.1035) * 10.6
+            base_price_24k = (price_ounce_inr / 31.1035) * 10.65
             
             # 3. Calculate Purities
             base_22k = base_price_24k * (22/24)
@@ -66,6 +66,7 @@ def home():
 
 # Important for Vercel
 app = app
+
 
 
 
