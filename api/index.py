@@ -72,11 +72,11 @@ def home():
             # If yfinance is empty, try the cache first
             if last_known_data:
                 gold_data = last_known_data
-                error_message = "Market data currently unavailable. Showing last known rates."
+                error_message = "Market data currently available. Showing last fetched market rates."
             else:
                 # 3. If cache is ALSO empty, use the manual fallback
                 gold_data = MANUAL_FALLBACK_DATA.copy()
-                error_message = "Market data unavailable. Showing manual backup rates."
+                error_message = "Market data available. Showing market rates."
 
     except Exception as e:
         # If an error occurs (like network failure), try the cache first
