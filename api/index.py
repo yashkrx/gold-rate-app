@@ -16,9 +16,19 @@ app = Flask(__name__, template_folder=template_dir)
 # 1. Initialize a global variable to hold the cached data
 last_known_data = {}
 
+# 2. Add your MANUAL fallback data here. 
+# Update these numbers manually whenever you want a strict backup.
+MANUAL_FALLBACK_DATA = {
+    'date': 'Manual Backup',
+    'price_24k': '75,000',
+    'price_22k': '68,750',
+    'price_18k': '56,250',
+    'currency': '₹',
+    'trend': 'none'
+}
+
 @app.route('/')
 def home():
-    # 2. Tell Python we are using the global variable
     global last_known_data 
     
     gold_data = {}
@@ -52,46 +62,34 @@ def home():
                 'price_22k': "{:,.0f}".format(final_22k),
                 'price_18k': "{:,.0f}".format(final_18k),
                 'currency': '₹',
-                'trend': 'up' # You might want to calculate this dynamically later!
+                'trend': 'up'
             }
             
-            # 3. Save the successful fetch to our global cache
+            # Save the successful fetch to our global cache
             last_known_data = gold_data.copy()
             
         else:
-            # 4. If yfinance is empty, try to use the cache
+            # If yfinance is empty, try the cache first
             if last_known_data:
                 gold_data = last_known_data
                 error_message = "Market data currently unavailable. Showing last known rates."
             else:
-                error_message = "Market data unavailable and no previous data to show."
+                # 3. If cache is ALSO empty, use the manual fallback
+                gold_data = MANUAL_FALLBACK_DATA.copy()
+                error_message = "Market data unavailable. Showing manual backup rates."
 
     except Exception as e:
-        # 5. If an error occurs (like network failure), try to use the cache
+        # If an error occurs (like network failure), try the cache first
         if last_known_data:
             gold_data = last_known_data
-            error_message = f"Live fetch failed. Showing last known rates."
+            error_message = "Live fetch failed. Showing last known rates."
         else:
-            error_message = f"Internal Error: {str(e)}"
+            # 4. If cache is empty during an error, use the manual fallback
+            gold_data = MANUAL_FALLBACK_DATA.copy()
+            error_message = "Live fetch failed. Showing manual backup rates."
+            # Optional: You can append str(e) to the error message if you want to see the exact code error on your frontend.
 
     return render_template('index.html', data=gold_data, error=error_message)
 
 # Important for Vercel
 app = app
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
