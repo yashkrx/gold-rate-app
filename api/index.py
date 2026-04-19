@@ -20,9 +20,9 @@ last_known_data = {}
 # Update these numbers manually whenever you want a strict backup.
 MANUAL_FALLBACK_DATA = {
     'date': 'Manual Backup',
-    'price_24k': '75,000',
-    'price_22k': '68,750',
-    'price_18k': '56,250',
+    'price_24k': '1,58,212',
+    'price_22k': '1,44,165',
+    'price_18k': '1,18,433',
     'currency': '₹',
     'trend': 'none'
 }
