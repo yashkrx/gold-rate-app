@@ -19,7 +19,7 @@ last_known_data = {}
 # 2. Add your MANUAL fallback data here. 
 # Update these numbers manually whenever you want a strict backup.
 MANUAL_FALLBACK_DATA = {
-    'date': 'Manual Backup',
+    'date': 'Saturday,Sunday',
     'price_24k': '1,58,212',
     'price_22k': '1,44,165',
     'price_18k': '1,18,433',
