@@ -5,67 +5,113 @@
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Kalyan Jewellers | Gold & Silver Rate | Live Prices </title>
-
+    <title> Kalyan Jewellers | Gold Rate | Live Prices </title>
     <style>
+        
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
             color: #333;
-        }
-
-        .site-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-
-        .menu-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            width: 30px;
-        }
-
-        .menu-icon span {
-            height: 4px;
-            background-color: #888;
-            border-radius: 2px;
-        }
-
-        .logo-container img {
-            height: 70px;
-        }
-
-        .shop-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            border: 1px solid #333;
-            border-radius: 50%;
-            text-decoration: none;
-            color: #333;
-            font-size: 10px;
-            font-weight: bold;
+    
+        } 
+        
+    /*
+        .header {
+            background-color: #000;
+            padding: 15px 0;
             text-align: center;
+            border-bottom: 3px solid #d4af37;
         }
+        .header h1 {
+            color: #d4af37; 
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            font-size: 24px;
+            text-transform: uppercase;
+            border-radius: 10px;
+        }        */
+        .site-header {
+    display: flex;
+    justify-content: space-between; /* Pushes items to Left, Center, Right */
+    align-items: center;            /* Vertically centers them */
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee; /* Optional: adds a subtle separator */
+    font-family: Arial, sans-serif;
+  }
 
+  /* 2. Left: Hamburger Menu */
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Space between lines */
+    cursor: pointer;
+    width: 30px;
+  }
+  
+  .menu-icon span {
+    display: block;
+    height: 4px;
+    background-color: #888; /* The gray color from your photo */
+    border-radius: 2px;
+  }
+
+  /* 3. Center: Logo */
+  .logo-container img {
+    height: 70px; /* Adjust this based on your actual logo size */
+    width: auto;
+    display: block;
+  }
+
+  /* 4. Right: Shop Online Button */
+  .shop-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 50%; /* Makes it a perfect circle */
+    text-decoration: none;
+    color: #333;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .shop-btn:hover {
+    background-color: #f9f9f9;
+  }
+   .my-logo {
+    width: 170px; /* Adjust this to your preferred size */
+    height: auto; /* Keeps the aspect ratio correct */
+    display: block; /* Removes extra space below the image */
+}
+
+/* Optional: If you want the rounded gold border on the LOGO itself */
+.logo-container {
+    display: inline-block; /* Wraps tightly around the logo */
+     /* Metallic Gold */
+    /* Makes it a circle */
+    padding: 1px; /* Space between logo and border */
+}
+        
+        /* ADDED NEW CODE TILL BREADCRUMB  */
         .breadcrumb {
             background-color: #fff;
             padding: 10px 20px;
             font-size: 12px;
             color: #666;
             border-bottom: 1px solid #eee;
+            border-radius: 10px;
         }
 
+        /* MAIN CONTAINER */
         .container {
             max-width: 900px;
             margin: 30px auto;
@@ -75,157 +121,246 @@
             border-radius: 10px;
         }
 
+        /* TITLE SECTION */
         .page-title {
             text-align: center;
             margin-bottom: 30px;
         }
-
         .page-title h2 {
             font-size: 28px;
             font-weight: 300;
+            color: #000;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
+        .page-title p {
+            color: #777;
+            font-size: 14px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
 
+        /* FILTERS (Mock Dropdowns) */
         .filters {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-bottom: 40px;
             flex-wrap: wrap;
-        }
-
-        .select-box {
-            padding: 10px;
-            width: 180px;
-            border: 1px solid #ccc;
             border-radius: 10px;
         }
+        .select-box {
+            padding: 10px 15px;
+            width: 200px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #555;
+            font-size: 14px;
+            border-radius: 10px; /* Square edges like the original site */
+        }
 
+        /* RATES TABLE */
         .rates-table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
             border: 4px solid transparent;
-            border-radius: 15px;
-            background-image: linear-gradient(white, white),
-                              linear-gradient(to bottom right, #b88746, #fdf5a6, #b88746);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
+  
+  /* 2. Set the curve */
+  border-radius: 15px;
 
+  /* 3. The Magic: Two backgrounds. 
+     - The first is the color of the INSIDE of your box (e.g., white or black).
+     - The second is the Gold Gradient. */
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(to bottom right, #b88746, #fdf5a6, #b88746);
+  
+  /* 4. Tell the browser to paint the first layer inside the padding, 
+     and the second layer across the whole border area */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+        }
+        
         .rates-table th {
             background-color: #f4f4f4;
+            color: #333;
+            font-weight: 600;
             padding: 15px;
+            text-align: center;
             border-bottom: 3px solid #d4af37;
+            text-transform: uppercase;
+            font-size: 15px;
+            border-radius: 5px;
+            
         }
-
         .rates-table td {
             padding: 15px;
             border-bottom: 1px solid #eee;
-            text-align: center;
+            color: #333;
+            font-size: 16px;
+        
         }
+        .price-up { color: green; }
+        .price-down { color: red; }
 
-        .silver-row {
-            background-color: #fafafa;
-            font-weight: bold;
-        }
-
+        /* DISCLAIMER */
         .disclaimer {
             margin-top: 30px;
             font-size: 11px;
             color: #999;
             text-align: center;
+            border-radius: 10px;
+        }
+        . copyright {
+            margin-top: 30px;
+            font-size: 25px;
+            color: #d4af37;
+            text-align: center;
+            border-radius: 10px;
         }
 
+        /* ERROR MESSAGE */
         .error-bar {
             background-color: #ffe6e6;
             color: #d8000c;
             padding: 10px;
             text-align: center;
             margin-bottom: 10px;
+            font-size: 14px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<header class="site-header">
+    <header class="site-header">
+    
     <div class="menu-icon">
-        <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="logo-container">
-        <img src="https://www.kalyanjewellers.net/images/kalyan_logo.svg">
+    <img src="https://www.kalyanjewellers.net/images/kalyan_logo.svg" alt="Company Logo" class="my-logo">
+    </div>
+        
+
+    <a href="#" class="shop-btn">
+      Shop<br>Online
+    </a>
+
+    </header>
+    <!--
+    <div class="header">
+        <h1>KALYAN JEWELLERS </h1>
+    </div>
+-->
+    <div class="breadcrumb">
+        Home &nbsp; > &nbsp; Gold Rate &nbsp; > &nbsp; <strong>Gold Rate Today</strong>
     </div>
 
-    <a href="#" class="shop-btn">Shop<br>Online</a>
-</header>
+    <div class="container">
+        
+        {% if error %}
+            <div class="error-bar">{{ error }}</div>
+        {% endif %}
 
-<div class="breadcrumb">
-    Home > Gold Rate > <strong>Gold Rate Today</strong>
-</div>
+        <div class="page-title">
+            <h2>Today's Gold Rate at KALYAN JEWELLERS</h2>
+            <p>Searching for the latest prices of gold? We bring you the daily updated gold rates on a per 10 gram basis. Find out the gold rate today at KALYAN JEWELLERS.</p>
+        </div>
 
-<div class="container">
+        <div class="filters">
+            <select class="select-box">
+                <option>INDIA</option>
+            </select>
+            <select class="select-box">
+                <option>BIHAR</option>
+                
+            </select>
+            <select class="select-box">
+                <option>PATNA</option>
+                <option>GAYA</option>
+                <option>BHAGALPUR</option>
+                <option>HATWA</option>
+                <option>PURNEA</option>
+                <option>BANKA</option>
+                <option>ARRAH</option>
+                
+            </select>
+            <button style="background-color: #d4af37; color:#fff ; border: none; padding: 10px 20px; cursor: pointer; border-radius: 10px;">SUBMIT</button>
+        </div>
 
-    {% if error %}
-        <div class="error-bar">{{ error }}</div>
-    {% endif %}
+        <h3 style="text-align: center; font-size: 16px; margin-top: 30px; color: #d4af37;">
+            TODAY'S GOLD RATE AT KALYAN JEWELLERS <span style="color: #999; font-weight: normal;">({{ data.date }})</span>
+        </h3>
 
-    <div class="page-title">
-        <h2>Today's Gold & Silver Rate</h2>
+        {% if data %}
+        <table class="rates-table">
+    <thead>
+        <tr>
+            <th>Metal</th>
+            <th>Carat / Type</th>
+            <th>Purity</th>
+            <th>Price (10g)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- GOLD -->
+        <tr>
+            <td rowspan="3"><strong>Gold</strong></td>
+            <td><strong>24 Carat</strong></td>
+            <td>99.9% (Pure Gold)</td>
+            <td style="font-weight: bold;">₹ {{ data.price_24k }}</td>
+        </tr>
+        <tr>
+            <td><strong>22 Carat</strong></td>
+            <td>91.6% (Standard)</td>
+            <td>₹ {{ data.price_22k }}</td>
+        </tr>
+        <tr>
+            <td><strong>18 Carat</strong></td>
+            <td>75.0% (Diamond & Gold Jewellery)</td>
+            <td>₹ {{ data.price_18k }}</td>
+        </tr>
+
+        <!-- SILVER -->
+        <tr>
+            <td><strong>Silver</strong></td>
+            <td>-</td>
+            <td>99.9% (Pure Silver)</td>
+            <td style="font-weight: bold;">₹ {{ data.silver_price }}</td>
+        </tr>
+    </tbody>
+        </table>
+        {% else %}
+            <p style="text-align: center; padding: 20px;">Loading live rates...</p>
+        {% endif %}
+
+        <div class="disclaimer">
+            *Gold rate updated daily. Prices may vary by city and store.
+        </div>
+        <div class="copyright">
+            Copyright © 2026 Kalyan Jewellers. All the rights are reserved.  </div>
     </div>
-
-    <h3 style="text-align:center; color:#d4af37;">
-        Rates ({{ data.date }})
-    </h3>
-
-    {% if data %}
-    <table class="rates-table">
-        <thead>
-            <tr>
-                <th>Metal</th>
-                <th>Type</th>
-                <th>Purity</th>
-                <th>Price (10g)</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <!-- GOLD -->
-            <tr>
-                <td rowspan="3"><strong>Gold</strong></td>
-                <td>24K</td>
-                <td>99.9%</td>
-                <td>₹ {{ data.price_24k }}</td>
-            </tr>
-            <tr>
-                <td>22K</td>
-                <td>91.6%</td>
-                <td>₹ {{ data.price_22k }}</td>
-            </tr>
-            <tr>
-                <td>18K</td>
-                <td>75%</td>
-                <td>₹ {{ data.price_18k }}</td>
-            </tr>
-
-            <!-- SILVER -->
-            <tr class="silver-row">
-                <td><strong>Silver</strong></td>
-                <td>-</td>
-                <td>99.9%</td>
-                <td>₹ {{ data.silver_price }}</td>
-            </tr>
-        </tbody>
-    </table>
-    {% else %}
-        <p style="text-align:center;">Loading rates...</p>
-    {% endif %}
-
-    <div class="disclaimer">
-        *Rates may vary slightly by city and store.
-    </div>
-
-</div>
 
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
