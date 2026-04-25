@@ -66,7 +66,7 @@ def home():
                 silver_price_ounce_usd = silver_info['Close'].iloc[-1]
                 silver_price_ounce_inr = silver_price_ounce_usd * usd_to_inr
 
-                silver_price_10g = (silver_price_ounce_inr / 31.1035) * 10
+                silver_price_10g = (silver_price_ounce_inr / 31.1035) * 11.2
                 silver_final = silver_price_10g * tax_multiplier
 
                 silver_price = "{:,.0f}".format(silver_final)
