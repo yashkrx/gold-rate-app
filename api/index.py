@@ -51,7 +51,7 @@ def home():
 
             price_ounce_inr = price_ounce_usd * usd_to_inr
 
-            base_price_24k = (price_ounce_inr / 31.1035) * 10.67
+            base_price_24k = (price_ounce_inr / 31.1035) * 10.85
             base_22k = base_price_24k * (22 / 24)
             base_18k = base_price_24k * (18 / 24)
 
