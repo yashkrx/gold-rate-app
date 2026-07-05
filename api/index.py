@@ -19,10 +19,10 @@ last_known_data = {}
 # Manual fallback data
 MANUAL_FALLBACK_DATA = {
     'date': 'Saturday, Sunday',
-    'price_24k': '1,58,212',
-    'price_22k': '1,44,165',
-    'price_18k': '1,18,433',
-    'silver_price': '1,850',  # per 10g
+    'price_24k': '1,53,212',
+    'price_22k': '1,37,165',
+    'price_18k': '1,14,433',
+    'silver_price': '2,650',  # per 10g
     'currency': '₹',
     'trend': 'none'
 }
