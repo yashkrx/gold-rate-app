@@ -55,7 +55,7 @@ def home():
             base_22k = base_price_24k * (22 / 24)
             base_18k = base_price_24k * (18 / 24)
 
-            tax_multiplier = 1.17
+            tax_multiplier = 1.14
 
             final_24k = base_price_24k * tax_multiplier
             final_22k = base_22k * tax_multiplier
